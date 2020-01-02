@@ -32,5 +32,5 @@ source ./venv/bin/activate
 echo "add --perform to actually do the thing"
 
 for NAME in $NAMES_TO_DELETE; do
-	slack-cleaner --token "$SLACK_TOKEN" --rate=1 --message --direct "$NAME" --user "$SLACK_USERNAME" --before "$DATE" $@
+	slack-cleaner --token "$SLACK_TOKEN" --rate=1 --message --direct "$NAME" --user "$SLACK_USERNAME" --before "$DATE" --log $@
 done;
