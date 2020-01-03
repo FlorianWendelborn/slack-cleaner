@@ -6,8 +6,8 @@
 SLACK_TOKEN="${SLACK_TOKEN:-''}"
 SLACK_USERNAME="${SLACK_USERNAME:-''}"
 DAYS_TO_LEAVE="${1:-14}"
-
-NAMES_TO_DELETE=$(cat names.txt)
+NAMES_TO_DELETE="$(cat names.txt)"
+DATEUTIL="$(which gdate || which date)"
 
 if test -z "$SLACK_TOKEN"; then
     echo "SLACK_TOKEN not provided. Aborting."
@@ -26,10 +26,12 @@ fi
 
 ### SCRIPT
 
-#DATE=$(node -p "const d = new Date(Date.now() - $DAYS_TO_LEAVE * 86400000); [d.getFullYear(), d.getMonth() + 1, d.getDate() + 1].join('')")
-
-# macbros: run `rew install coreutils`
-DATE=$(date --date="@$(($(date +%s) - $DAYS_TO_LEAVE * 86400))" +%Y%m%d)
+# macbros: run `brew install coreutils` and use `gdate`
+DATE=$(
+    $DATEUTIL \
+        --date=@$(($($DATEUTIL +%s) - $DAYS_TO_LEAVE * 86400)) \
+        +%Y%m%d
+)
 
 source ./venv/bin/activate
 echo "add --perform to actually do the thing"
