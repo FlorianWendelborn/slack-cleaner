@@ -3,8 +3,8 @@
 ### CONFIG
 
 # see https://api.slack.com/custom-integrations/legacy-tokens
-SLACK_TOKEN="${SLACK_TOKEN:-''}"
-SLACK_USERNAME="${SLACK_USERNAME:-''}"
+SLACK_TOKEN="${SLACK_TOKEN:-}"
+SLACK_USERNAME="${SLACK_USERNAME:-}"
 DAYS_TO_LEAVE="${1:-14}"
 NAMES_TO_DELETE="$(cat names.txt)"
 
@@ -17,7 +17,7 @@ fi
 
 if test -z "$SLACK_USERNAME"; then
 	echo "SLACK_USERNAME not provided. Aborting."
-	exit 1
+	exit 2
 fi
 
 if test -z "$NAMES_TO_DELETE"; then
@@ -32,6 +32,9 @@ if [[ $OSTYPE == *linux* ]]; then
 	DATE=$(date --date=@$(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
 elif [[ $OSTYPE == *darwin* ]]; then
 	DATE=$(date -r $(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
+else
+	echo "We do not recognise OSTYPE: $OSTYPE"
+	exit 3
 fi
 
 source ./venv/bin/activate
