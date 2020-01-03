@@ -33,7 +33,7 @@ if [[ $OSTYPE == *linux* ]]; then
 elif [[ $OSTYPE == *darwin* ]]; then
 	DATE=$(date -r $(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
 else
-	echo "We do not recognise OSTYPE: $OSTYPE"
+	echo We do not recognise OSTYPE: \"$OSTYPE\"
 	exit 3
 fi
 
