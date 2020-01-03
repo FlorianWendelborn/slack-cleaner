@@ -7,7 +7,6 @@ SLACK_TOKEN="${SLACK_TOKEN:-''}"
 SLACK_USERNAME="${SLACK_USERNAME:-''}"
 DAYS_TO_LEAVE="${1:-14}"
 NAMES_TO_DELETE="$(cat names.txt)"
-DATEUTIL="$(which gdate || which date)"
 
 shift
 
