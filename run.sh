@@ -8,6 +8,7 @@ SLACK_USERNAME=""
 DAYS_TO_LEAVE="14"
 
 NAMES_TO_DELETE=$(cat names.txt)
+CHANNELS_TO_DELETE=$(cat channels.txt)
 
 if test -z "$SLACK_TOKEN"; then
 	echo "SLACK_TOKEN not provided. Aborting."
@@ -32,5 +33,13 @@ source ./venv/bin/activate
 echo "add --perform to actually do the thing"
 
 for NAME in $NAMES_TO_DELETE; do
+	sleep 5
+	echo "Deleting direct messages with $NAME"
 	slack-cleaner --token "$SLACK_TOKEN" --rate=1 --message --direct "$NAME" --user "$SLACK_USERNAME" --before "$DATE" --log $@
+done;
+
+for CHANNEL in $CHANNELS_TO_DELETE; do
+	sleep 5
+	echo "Deleting messages in #$CHANNEL"
+	slack-cleaner --token "$SLACK_TOKEN" --rate=1 --message --channel "$CHANNEL" --user "$SLACK_USERNAME" --before "$DATE" --log $@
 done;
