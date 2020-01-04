@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # Load configuration
 
 CHANNELS_TO_DELETE=$(cat channels.txt)
