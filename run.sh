@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-### CONFIG
+# Load configuration
 
-# see https://api.slack.com/custom-integrations/legacy-tokens
+CHANNELS_TO_DELETE=$(cat channels.txt)
+NAMES_TO_DELETE="$(cat names.txt)"
+
+if test -f "./config.sh"; then
+	source config.sh
+fi
+
 SLACK_TOKEN="${SLACK_TOKEN:-}"
 SLACK_USERNAME="${SLACK_USERNAME:-}"
-DAYS_TO_LEAVE="${1:-14}"
-NAMES_TO_DELETE="$(cat names.txt)"
-CHANNELS_TO_DELETE=$(cat channels.txt)
-
-shift
+SLACK_CLEANER_DAYS_TO_LEAVE="${SLACK_CLEANER_DAYS_TO_LEAVE:-14}"
 
 if test -z "$SLACK_TOKEN"; then
 	echo "SLACK_TOKEN not provided. Aborting."
@@ -22,21 +24,24 @@ if test -z "$SLACK_USERNAME"; then
 fi
 
 if test -z "$NAMES_TO_DELETE"; then
-	echo "names.txt is empty. Nothing to do here."
-	exit 0
+	if test -z "$CHANNELS_TO_DELETE"; then
+		echo "names.txt and channels.txt are empty. Nothing to do here."
+		exit 0
+	fi
 fi
 
-### SCRIPT
-
+# Figure out the date
 
 if [[ $OSTYPE == *linux* ]]; then
 	DATE=$(date --date=@$(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
 elif [[ $OSTYPE == *darwin* ]]; then
 	DATE=$(date -r $(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
 else
-	echo We do not recognise OSTYPE: \"$OSTYPE\"
+	echo "We do not recognise OSTYPE: \"$OSTYPE\""
 	exit 3
 fi
+
+# Execute
 
 source ./venv/bin/activate
 echo "add --perform to actually do the thing"
