@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+# TODO: Re-enable after figuring out how to not make the program crash when reaching users you haven’t messaged
+# set -euo pipefail
 
 # Load configuration
 
@@ -35,9 +36,9 @@ fi
 # Figure out the date
 
 if [[ $OSTYPE == *linux* ]]; then
-	DATE=$(date --date=@$(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
+	DATE=$(date --date=@$(( $(date +%s) - $SLACK_CLEANER_DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
 elif [[ $OSTYPE == *darwin* ]]; then
-	DATE=$(date -r $(( $(date +%s) - $DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
+	DATE=$(date -r $(( $(date +%s) - $SLACK_CLEANER_DAYS_TO_LEAVE * 86400 )) +%Y%m%d)
 else
 	echo "We do not recognise OSTYPE: \"$OSTYPE\""
 	exit 3
