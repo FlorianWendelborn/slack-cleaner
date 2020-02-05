@@ -4,6 +4,13 @@
 
 Run `setup.sh`
 
+### Installing `virtualenv` on macOS
+
+```bash
+brew install python
+pip3 install virtualenv
+```
+
 ## Configuration
 
 ### List of Names
