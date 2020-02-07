@@ -27,7 +27,11 @@ Provide a list of names in `names.txt`:
 
 Provide a list of channels in `channels.txt`:
 
-1. TODO
+1. Go to https://yoursubdomain.slack.com/stats#channels
+2. Select "All Time" and deselect everyhing in "Edit Columns"
+3. Remove All Columns besides the channel name (`slack-cleaner` expects a newline-separated list of usernames)
+4. Remove the CSV header if you didn’t do that in step 3
+5. Save as `channels.txt` in the repo root
 
 ### Slack Username & Token
 
