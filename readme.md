@@ -50,7 +50,7 @@ You can also add `SLACK_CLEANER_DAYS_TO_LEAVE="14"` to the `config.sh` file if y
 
 #### Alternative Way (Via Environment)
 
-In case you dislike the idea of a config file, you can also provide the `SLACK_TOKEN`, `SLACK_USERNAME`, and `SLACK_CLEANER_DAYS_TO_DELETE` via environment variables.
+In case you dislike the idea of a config file, you can also provide the `SLACK_TOKEN`, `SLACK_USERNAME`, and `SLACK_CLEANER_DAYS_TO_LEAVE` via environment variables.
 
 ## Running
 
