@@ -42,7 +42,7 @@ SLACK_TOKEN="your-slack-token"
 SLACK_USERNAME="your_username"
 ```
 
-You can also add `SLACK_CLEANER_DAYS_TO_DELETE="14"` to the `config.sh` file if you want to keep less or more than 14 days.
+You can also add `SLACK_CLEANER_DAYS_TO_LEAVE="14"` to the `config.sh` file if you want to keep less or more than 14 days.
 
 #### Alternative Way (Via Environment)
 
