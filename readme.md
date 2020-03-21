@@ -37,20 +37,37 @@ Provide a list of channels in `channels.txt`:
 
 You can create a `SLACK_TOKEN` here: <https://api.slack.com/custom-integrations/legacy-tokens>
 
-#### Easiest Way (via Config File)
+### Configuring via Config File
 
-The easiest way is to create a `config.sh` file with the following content:
+The easiest way to configure `slack-cleaner` is to create a `config.sh` file with the following content:
 
 ```bash
 SLACK_TOKEN="your-slack-token"
 SLACK_USERNAME="your_username"
 ```
 
-You can also add `SLACK_CLEANER_DAYS_TO_LEAVE="14"` to the `config.sh` file if you want to keep less or more than 14 days.
+You can also add `SLACK_CLEANER_DAYS_TO_LEAVE="14"` to the `config.sh` file if you want to keep less or more than the default of the last 14 days.
 
-#### Alternative Way (Via Environment)
+If you want to clean files, you can also add this:
 
-In case you dislike the idea of a config file, you can also provide the `SLACK_TOKEN`, `SLACK_USERNAME`, and `SLACK_CLEANER_DAYS_TO_LEAVE` via environment variables.
+```bash
+SLACK_CLEANER_DELETE_FILES="true"
+```
+
+### Configuration Options
+
+Configuration options can be provided via the environment or added to `config.sh`.
+
+|                          Name | Description                         | Default | Required |
+| ----------------------------: | :---------------------------------- | :------ | :------- |
+|                 `SLACK_TOKEN` | Your Slack Legacy Token             | —       | ✅       |
+|              `SLACK_USERNAME` | Your Slack Username                 | —       | ✅       |
+| `SLACK_CLEANER_DAYS_TO_LEAVE` | Amount of recent days to keep       | `14`    | ❌       |
+|  `SLACK_CLEANER_DELETE_FILES` | Should files be deleted?            | `false` | ❌       |
+| `SLACK_CLEANER_SLEEP_BETWEEN` | Adjust to prevent API Rate Limiting | `5`     | ❌       |
+
+**`channels.txt`**: Channels to delete messages in  
+**`names.txt`**: Usernames to delete direct messages with
 
 ## Running
 
