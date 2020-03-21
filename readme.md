@@ -74,3 +74,7 @@ Configuration options can be provided via the environment or added to `config.sh
 `./run.sh`
 
 Add `--perform` if you actually want to delete the messages it shows. Deleted messages will be saved in `.log` files in the current folder.
+
+## Credits
+
+This is just a simple wrapper around [slack-cleaner](https://github.com/kfei/slack-cleaner) by [@kfei](https://github.com/kfei) to make it easier to regularly clean slack.
