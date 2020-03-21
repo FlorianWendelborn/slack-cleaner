@@ -1,3 +1,5 @@
-venv
 *.log
+channels.txt
 config.sh
+names.txt
+venv
