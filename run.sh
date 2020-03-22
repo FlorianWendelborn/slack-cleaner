@@ -72,7 +72,7 @@ sleep "$SLACK_CLEANER_SLEEP_BETWEEN"
 ## Prepare Slack Cleaner
 
 source ./venv/bin/activate
-CLEANER="slack-cleaner --token \"$SLACK_TOKEN\" --user \"$SLACK_USERNAME\" --before \"$DATE\" --rate=1 --log"
+CLEANER="slack-cleaner --token $SLACK_TOKEN --user $SLACK_USERNAME --before $DATE --rate=1 --log"
 
 ## Direct Messages
 
