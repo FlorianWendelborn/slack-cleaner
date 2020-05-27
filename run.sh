@@ -89,7 +89,7 @@ done
 INDEX=1
 for CHANNEL in $CHANNELS_TO_DELETE; do
 	sleep "$SLACK_CLEANER_SLEEP_BETWEEN"
-	echo "($INDEX/$COUNT_NAMES) Deleting messages in #$CHANNEL"
+	echo "($INDEX/$COUNT_CHANNELS) Deleting messages in #$CHANNEL"
 	$CLEANER --message --channel "$CHANNEL" $@
 	((INDEX++))
 done
