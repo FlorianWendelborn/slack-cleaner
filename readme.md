@@ -35,7 +35,13 @@ Provide a list of channels in `channels.txt`:
 
 ### Slack Username & Token
 
-You can create a `SLACK_TOKEN` here: <https://api.slack.com/custom-integrations/legacy-tokens>
+You can create/retrieve your `SLACK_TOKEN` in the following ways:
+
+|    Name | Description                                   | Link                                                                                   |
+| ------: | :-------------------------------------------- | :------------------------------------------------------------------------------------- |
+| New Way | Workaround to Allow Creating new Slack Tokens | [See @jackellenberger/emojme](https://github.com/jackellenberger/emojme#slack-for-web) |
+| Old way | Won’t allow creating new tokens, only renewal | [See Slack Legacy Tokens](https://api.slack.com/custom-integrations/legacy-tokens)     |
+
 
 ### Configuring via Config File
 
